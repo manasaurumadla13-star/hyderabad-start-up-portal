@@ -1,16 +1,11 @@
 let input = document.getElementById("search");
-let list = document.querySelectorAll("#startupList li");
+let list = document.getElementById("startupList").getElementsByTagName("li");
 
-input.addEventListener("keyup", function () {
-  let value = input.value.toLowerCase();
-
-  list.forEach(function (item) {
-    let text = item.innerText.toLowerCase();
-
-    if (text.includes(value)) {
-      item.style.display = "";
-    } else {
-      item.style.display = "none";
-    }
-  });
+input.addEventListener("keyup", function() {
+  let filter = input.value.toLowerCase();
+  
+  for (let i = 0; i < list.length; i++) {
+    let text = list[i].innerText.toLowerCase();
+    list[i].style.display = text.includes(filter) ? "" : "none";
+  }
 });
